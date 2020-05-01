@@ -53,7 +53,7 @@ export default ({ navigation, route }) => {
               marginBottom: 30,
               backgroundColor: "white",
             }}
-            source={{ uri: require("../../assets/images/Chief.jpeg") }}
+            source={require("../../assets/images/Chief.jpeg")}
             size="xlarge"
           />
           <ListItem

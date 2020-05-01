@@ -1,5 +1,12 @@
-import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useContext, useState, useEffect } from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import { Icon } from "native-base";
 import { Button, Card } from "react-native-elements";
 import { Context } from "../../../Context/FoodContext";
 import userlogcontext from "../../../connection/userLogContext";
@@ -39,6 +46,7 @@ export default list = ({ title, result, del_type, navigation }) => {
               <TouchableOpacity
                 style={{
                   fontSize: 22,
+                  marginLeft: 50,
                 }}
                 onPress={() => {
                   delfavrec(result.id, id, type, () => {

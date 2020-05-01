@@ -16,25 +16,7 @@ const Stack = createStackNavigator();
 export default function AuthNavigation() {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={({ navigation }) => ({
-          headerRight: () => {
-            console.log(navigation);
-            return (
-              <TouchableOpacity
-                style={{ marginRight: 25 }}
-                onPress={() => {
-                  navigation.navigate("Edit");
-                }}
-              >
-                <Icon name="edit" type="Feather" style={{ fontSize: 28 }} />
-              </TouchableOpacity>
-            );
-          },
-        })}
-      />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
       <Stack.Screen name="Edit" component={EditScreen} />
       <Stack.Screen
         name="FoodDisplayList"

@@ -33,9 +33,9 @@ const Details = ({ navigation, route }) => {
   const { state, getfooddata } = useContext(Context);
   console.disableYellowBox = true;
   useEffect(() => {
+    console.log("effect");
     getfooddata();
   }, []);
-  console.log(state[id - 1]);
   if (state[id - 1] === undefined) {
     return null;
   }
@@ -67,9 +67,24 @@ const Details = ({ navigation, route }) => {
             </Left>
           </CardItem>
         </Card>
-        <View>
+        <Text
+          style={{
+            marginVertical: 20,
+            marginLeft: 20,
+            fontSize: 20,
+          }}
+        >
+          It's Recipe
+        </Text>
+        <View
+          style={{
+            backgroundColor: "white",
+            padding: 20,
+            fontSize: 20,
+            paddingLeft: 45,
+          }}
+        >
           <Text>{state[id - 1].recipe.name}</Text>
-          <Icon />
         </View>
       </View>
     </ScrollView>

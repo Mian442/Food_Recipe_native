@@ -25,7 +25,7 @@ export default ({ navigation, route }) => {
   const [type, settype] = data2;
 
   console.disableYellowBox = true;
-  console.log("Logger\n" + id + " " + type);
+  console.log("Logger1\n" + id + " " + type);
   useEffect(() => {
     setanimate(true);
     getSingleuserdata(type);
@@ -67,12 +67,11 @@ export default ({ navigation, route }) => {
               marginBottom: 30,
               backgroundColor: "white",
             }}
-            source={{
-              uri:
-                type === "Chief"
-                  ? require("../../assets/images/Chief.jpeg")
-                  : require("../../assets/images/User.jpeg"),
-            }}
+            source={
+              type === "Chief"
+                ? require("../../assets/images/Chief.jpeg")
+                : require("../../assets/images/User.jpeg")
+            }
             size="xlarge"
           />
           <ListItem

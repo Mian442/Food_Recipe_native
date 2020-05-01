@@ -24,7 +24,7 @@ export default list = ({ title, result, navigation, del_type }) => {
           <ListItem
             key={key}
             leftAvatar={{
-              source: { uri: require("../../../assets/images/Chief.jpeg") },
+              source: require("../../../assets/images/Chief.jpeg"),
             }}
             title={item.name}
             subtitle={<Text numberOfLines={1}>{item.about}</Text>}
