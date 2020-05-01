@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mChildren",
-    "slug": "mChildren",
+    "name": "Recipe",
+    "slug": "recipe",
     "platforms": [
       "ios",
       "android",
@@ -13,8 +13,8 @@
     "scheme": "myapp",
     "splash": {
       "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

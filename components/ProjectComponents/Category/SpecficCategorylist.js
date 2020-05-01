@@ -36,7 +36,7 @@ export default ({ navigation, route }) => {
   console.log("CatSpec");
   console.log(state);
   return (
-    <View>
+    <View style={{flex: 1}}>
       {Ainemate == true ? (
         <ActivityIndicator
           color="#0000ff"

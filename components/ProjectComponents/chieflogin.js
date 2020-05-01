@@ -104,7 +104,6 @@ export default ({ navigation, route }) => {
             leftIcon={<Icon name="book" type="MaterialCommunityIcons" />}
             chevron
             onPress={() => {
-              console.log("recip");
               navigation.navigate("DisplayList", {
                 data: state[route.params.cid - 1].recipe,
                 premission: false,
@@ -140,7 +139,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
   },
   button: {
-    marginHorizontal: 60,
     borderRadius: 25,
     borderColor: "#eb0c40",
     marginTop: 80,

@@ -4,7 +4,6 @@ import ChiefResultlists from "../components/ProjectComponents/Chief/Cheiflist";
 import { Context } from "../Context/FoodContext";
 
 export default function ChiefScreen({ navigation }) {
-  console.log("chiefscreen");
   const { state, getcheifdata } = useContext(Context);
   const [Ainemate, setanimate] = useState();
   console.disableYellowBox = true;

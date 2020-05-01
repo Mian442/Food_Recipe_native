@@ -40,7 +40,7 @@ export default App = () => {
                     <Stack.Screen
                       name="CatSpec"
                       component={CatScreen}
-                      options={{ title: "Secified Category" }}
+                      options={{ title: "Specified Category" }}
                     />
                     <Stack.Screen
                       name="RecipeDetail"
