@@ -1,42 +1,44 @@
-import React, {useContext} from "react";
-import {ScrollView, StyleSheet, Text, View,} from "react-native";
-import {Context} from "../../../Context/FoodContext";
+import React, { useContext } from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Context } from "../../../Context/FoodContext";
 import userlogcontext from "../../../connection/userLogContext";
-import {ListItem} from "react-native-elements";
+import { ListItem } from "react-native-elements";
 
-export default list = ({title, result, navigation, del_type}) => {
-  const {data1, data2} = useContext(userlogcontext);
+export default list = ({ title, result, navigation, del_type }) => {
+  const { data1, data2 } = useContext(userlogcontext);
   const [id, setid] = data1;
   const [type, settype] = data2;
   console.log("chieflistscreen");
   console.disableYellowBox = true;
-  const {delfavchief} = useContext(Context);
+  const { delfavchief } = useContext(Context);
 
-  const filteredResults = result.filter(function (item) {
+  const filteredResults = result.filter(function(item) {
     return item != null;
   });
 
   return (
-      <View>
-        <Text style={styles.title}>{title}</Text>
-        <ScrollView>
-          {filteredResults.map((item, key) => (
-              <ListItem
-                  key={key}
-                  leftAvatar={{source: {uri: item.pic}}}
-                  title={item.name}
-                  subtitle={<Text numberOfLines={1}>{item.about}</Text>}
-                  bottomDivider
-                  chevron={true}
-                  onPress={() => {
-                    navigation.navigate("ChiefProfile", {
-                      cid: item.id,
-                    })
-                  }}
-              />
-          ))}
-        </ScrollView>
-      </View>
+    <View>
+      <Text style={styles.title}>{title}</Text>
+      <ScrollView>
+        {filteredResults.map((item, key) => (
+          <ListItem
+            key={key}
+            leftAvatar={{
+              source: { uri: require("../../../assets/images/Chief.jpeg") },
+            }}
+            title={item.name}
+            subtitle={<Text numberOfLines={1}>{item.about}</Text>}
+            bottomDivider
+            chevron={true}
+            onPress={() => {
+              navigation.navigate("ChiefProfile", {
+                cid: item.id,
+              });
+            }}
+          />
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 

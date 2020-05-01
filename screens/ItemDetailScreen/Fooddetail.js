@@ -33,18 +33,7 @@ const Details = ({ navigation, route }) => {
   const { state, getfooddata } = useContext(Context);
   console.disableYellowBox = true;
   useEffect(() => {
-    setanimate(true);
     getfooddata();
-    setTimeout(() => {
-      setanimate(false);
-    }, 3000);
-    navigation.addListener("didfocus", () => {
-      setanimate(true);
-      getfooddata();
-      setTimeout(() => {
-        setanimate(false);
-      }, 3000);
-    });
   }, []);
   console.log(state[id - 1]);
   if (state[id - 1] === undefined) {

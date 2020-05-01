@@ -53,9 +53,7 @@ export default ({ navigation, route }) => {
               marginBottom: 30,
               backgroundColor: "white",
             }}
-            source={{
-              uri: state[route.params.cid - 1].pic,
-            }}
+            source={{ uri: require("../../assets/images/Chief.jpeg") }}
             size="xlarge"
           />
           <ListItem
@@ -65,23 +63,9 @@ export default ({ navigation, route }) => {
             bottomDivider
           />
           <ListItem
-            title="Email"
-            rightTitle={state[route.params.cid - 1].mail}
-            leftIcon={<Icon name="md-mail" type="Ionicons" />}
-            bottomDivider
-          />
-          <ListItem
             title="Phone#"
             rightTitle={state[route.params.cid - 1].ph}
             leftIcon={<Icon name="phone" type="FontAwesome" />}
-            bottomDivider
-          />
-          <ListItem
-            title="Account Type"
-            rightTitle="Chief"
-            leftIcon={
-              <Icon name="account-card-details" type="MaterialCommunityIcons" />
-            }
             bottomDivider
           />
           <ListItem
