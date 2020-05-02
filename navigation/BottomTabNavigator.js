@@ -7,6 +7,7 @@ import ScreenChooser from "../screens/ScreenChooser";
 import CategoryScreen from "../screens/CategoryScreen";
 import ChiefScreen from "../screens/ChiefScreen";
 import SearchScreen from "../screens/SearchScreen";
+import PopularScreen from "../screens/PopularScreen";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -25,6 +26,20 @@ export default function BottomTabNavigator({ navigation, route }) {
           title: "Home",
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} name="home" type="Entypo" />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Popular"
+        component={PopularScreen}
+        options={{
+          title: "Popular",
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon
+              focused={focused}
+              name="fire"
+              type="material-community"
+            />
           ),
         }}
       />
@@ -94,5 +109,7 @@ function getHeaderTitle(route) {
       return "Category";
     case "Search":
       return "Search";
+    case "Popular":
+      return "Popular";
   }
 }

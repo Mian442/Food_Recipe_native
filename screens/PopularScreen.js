@@ -17,6 +17,7 @@ export default ({ navigation }) => {
   const [Ainemate, setanimate] = useState();
   console.disableYellowBox = true;
   const latest = [];
+  var temp;
   useEffect(() => {
     getdata();
     setanimate(true);
@@ -31,14 +32,20 @@ export default ({ navigation }) => {
       }, 3000);
     });
   }, []);
-
-  var j = 0;
   if (state == undefined) {
     return null;
   }
-  for (var i = state.length > 0 ? state.length : -1; i >= 0; i--) {
-    latest[i] = state[j];
-    j++;
+  for (var i = 0; i < state.length; i++) {
+    latest[i] = state[i];
+  }
+  for (var i = 0; i < state.length; i++) {
+    for (var j = 0; j < state.length; j++) {
+      if (state[j].views > state[i].views) {
+        temp = latest[i];
+        latest[i] = latest[j];
+        latest[j] = temp;
+      }
+    }
   }
   if (!(latest.length > 0)) {
     return null;
