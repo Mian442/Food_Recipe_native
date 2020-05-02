@@ -1,0 +1,35 @@
+[ {
+  "account_type" : "Chief",
+  "id" : 2,
+  "pass" : "1234uy",
+  "user" : "abc@gmail.com"
+}, {
+  "account_type" : "Visitor",
+  "id" : 1,
+  "pass" : "fahad1",
+  "user" : "fahad@gmail.com"
+}, {
+  "account_type" : "Visitor",
+  "id" : 2,
+  "name" : "Fahad",
+  "pass" : "123456789",
+  "user" : "Fahad@gmail.com"
+}, {
+  "account_type" : "Visitor",
+  "id" : 3,
+  "name" : "Ahmed",
+  "pass" : "alialiali",
+  "user" : "Ali@gmail.com"
+}, {
+  "account_type" : "Visitor",
+  "id" : 4,
+  "name" : "Ahmed",
+  "pass" : "123123",
+  "user" : "ali@gmail.com"
+}, {
+  "account_type" : "Visitor",
+  "id" : 5,
+  "name" : "Ahme ali",
+  "pass" : "aliali",
+  "user" : "ali@gmail.com"
+} ]
