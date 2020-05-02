@@ -10,13 +10,20 @@ import { Icon } from "native-base";
 import { Button, Card } from "react-native-elements";
 import { Context } from "../../../Context/FoodContext";
 import userlogcontext from "../../../connection/userLogContext";
+import { AsyncStorage } from "react-native";
 
 export default list = ({ title, result, del_type, navigation }) => {
   console.disableYellowBox = true;
   const { data1, data2 } = useContext(userlogcontext);
-  const [id, setid] = data1;
-  const [type, settype] = data2;
-  const { delfavrec, delfavchief } = useContext(Context);
+  const [id, setid] = useState();
+  const [type, settype] = useState();
+  AsyncStorage.getItem("DataKey").then((value) => {
+    console.log("del chief asyncstorage2");
+    setid(JSON.parse(value).id);
+    settype(JSON.parse(value).type);
+    console.log(value);
+  });
+  const { delfavrec } = useContext(Context);
   const filteredResults = result.filter(function(item) {
     return item != null;
   });

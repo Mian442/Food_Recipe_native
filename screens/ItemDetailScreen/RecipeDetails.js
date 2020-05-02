@@ -33,7 +33,6 @@ export default ({ navigation, route }) => {
     console.log("asyncstorage2");
     setrdata(JSON.parse(value));
     console.log(value);
-    console.log(rdata.id);
   });
 
   const [Ainemate, setanimate] = useState(true);

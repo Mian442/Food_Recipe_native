@@ -14,18 +14,12 @@ import { Provider } from "./Context/FoodContext";
 import ChiefProfileScreen from "./components/ProjectComponents/chieflogin";
 import FoodScreen from "./screens/ItemDetailScreen/Fooddetail";
 import { UserLogProvider } from "./connection/userLogContext";
-import Key from "./API/FirebaseStorageConfig";
-import firebase from "firebase";
-import "firebase/storage";
 const Stack = createStackNavigator();
 
 export default App = () => {
-  const [loggedIn, setLoggedin] = useState(false);
+  const [loggedIn, setLoggedin] = useState();
   const value = { loggedIn, setLoggedin };
   console.log(value);
-  if (!firebase.apps.length) {
-    firebase.initializeApp(Key.firebaseConfig);
-  }
   return (
     <UserContext.Provider value={value}>
       <UserContext.Consumer>

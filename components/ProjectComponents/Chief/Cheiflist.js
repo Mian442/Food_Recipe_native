@@ -1,17 +1,28 @@
-import React, { useContext } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import React, { useContext, useState } from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import { Icon } from "native-base";
 import { Context } from "../../../Context/FoodContext";
 import userlogcontext from "../../../connection/userLogContext";
 import { ListItem } from "react-native-elements";
+import { AsyncStorage } from "react-native";
 
 export default list = ({ title, result, navigation, del_type }) => {
   const { data1, data2 } = useContext(userlogcontext);
-  const [id, setid] = data1;
-  const [type, settype] = data2;
+  const [id, setid] = useState();
+  AsyncStorage.getItem("DataKey").then((value) => {
+    console.log("del chief asyncstorage2");
+    setid(JSON.parse(value).id);
+    console.log(value);
+  });
   console.log("chieflistscreen");
   console.disableYellowBox = true;
   const { delfavchief } = useContext(Context);
-
   const filteredResults = result.filter(function(item) {
     return item != null;
   });
@@ -29,6 +40,27 @@ export default list = ({ title, result, navigation, del_type }) => {
             title={item.name}
             subtitle={<Text numberOfLines={1}>{item.about}</Text>}
             bottomDivider
+            rightAvatar={
+              del_type === true ? (
+                <TouchableOpacity
+                  style={{
+                    fontSize: 22,
+                    marginLeft: 50,
+                  }}
+                  onPress={() => {
+                    delfavchief(item.id, id, () => {
+                      navigation.navigate("Profile");
+                    });
+                  }}
+                >
+                  <Icon
+                    name="trash-alt"
+                    style={{ color: "red", fontSize: 32 }}
+                    type="FontAwesome5"
+                  />
+                </TouchableOpacity>
+              ) : null
+            }
             chevron={true}
             onPress={() => {
               navigation.navigate("ChiefProfile", {

@@ -24,7 +24,7 @@ import { AsyncStorage } from "react-native";
 const Stack = createStackNavigator();
 
 export default ScreenChooser = ({ navigation }) => {
-  const [loggedIn, setLoggedin] = useState(false);
+  const [loggedIn, setLoggedin] = useState();
   const value = { loggedIn, setLoggedin };
   useEffect(() => {
     AsyncStorage.getItem("DataKey").then((value) => {

@@ -88,7 +88,7 @@ export default ({ navigation, route }) => {
                     type: "fav_chief",
                   };
                   putfav(data, () => {
-                    Alert.alert("Chief Added");
+                    alert("Chief Added");
                   });
                 } else {
                   setIname("hearto");

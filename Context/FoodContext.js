@@ -120,6 +120,7 @@ const delfavrec = () => {
 
 const delfavchief = () => {
   return async (id, user, callback) => {
+    console.log(id + " " + user + " ");
     var delid;
     const response = await Recipe.get(`/user/${user - 1}/fav_chief.json`);
     for (var i = 0; i < response.data.length; i++) {
