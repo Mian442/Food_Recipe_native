@@ -15,14 +15,14 @@ import userlogcontext from "../../connection/userLogContext";
 import { Icon, Card, Content, CardItem, Body, Left, Right } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import UserContext from "../../connection/userContext";
+import { AsyncStorage } from "react-native";
 
 export default ({ navigation, route }) => {
   const { state, getSingleuserdata } = useContext(Context);
   const { loggedIn, setLoggedin } = useContext(UserContext);
   const [Ainemate, setanimate] = useState();
-  const { data1, data2 } = useContext(userlogcontext);
-  const [id, setid] = data1;
-  const [type, settype] = data2;
+  const [id, setid] = useState();
+  const [type, settype] = useState();
 
   console.disableYellowBox = true;
   console.log("Logger1\n" + id + " " + type);
@@ -32,7 +32,14 @@ export default ({ navigation, route }) => {
     setTimeout(() => {
       setanimate(false);
     }, 3000);
-    navigation.addListener("didfocus", () => {
+    AsyncStorage.getItem("DataKey").then((value) => {
+      console.log("proasyncstorage2");
+      console.log("jj" + value);
+      console.log(JSON.parse(value).type);
+      settype(JSON.parse(value).type);
+      setid(JSON.parse(value).id);
+    });
+    navigation.addListener("focus", () => {
       console.log("LoggerFocus");
       setanimate(true);
       getSingleuserdata(type);
@@ -127,7 +134,15 @@ export default ({ navigation, route }) => {
             />
           ) : null}
           <Button
-            onPress={() => setLoggedin(false)}
+            onPress={async () => {
+              var Data = {
+                id: -3,
+                type: "",
+                LogStatus: false,
+              };
+              await AsyncStorage.setItem("DataKey", JSON.stringify(Data));
+              navigation.navigate("Home");
+            }}
             title={"Sign Out"}
             style={{ padding: 10, marginTop: 20 }}
             type="outline"

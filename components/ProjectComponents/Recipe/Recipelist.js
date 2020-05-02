@@ -21,7 +21,7 @@ export default list = ({ title, result, del_type, navigation }) => {
     return item != null;
   });
 
-  console.log("sample from resultlist.js -> ", filteredResults[1]);
+  // console.log("sample from resultlist.js -> ", filteredResults[1]);
 
   return (
     <ScrollView style={{ flex: 1 }}>

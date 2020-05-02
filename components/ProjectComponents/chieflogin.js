@@ -12,24 +12,34 @@ import { Avatar, ListItem } from "react-native-elements";
 import { Context } from "../../Context/FoodContext";
 import userlogcontext from "../../connection/userLogContext";
 import { Icon, Card, CardItem, Body, Left, Right } from "native-base";
+import { AsyncStorage } from "react-native";
 
 export default ({ navigation, route }) => {
-  const { state, getcheifdata } = useContext(Context);
+  const { state, getcheifdata, putfav } = useContext(Context);
   const [Ainemate, setanimate] = useState();
-  const { data1, data2 } = useContext(userlogcontext);
-  const [id, setid] = data1;
-  const [type, settype] = data2;
+
+  const [Iname, setIname] = useState("hearto");
+  const [Icheck, setIcheck] = useState(false);
+  const [rdata, setrdata] = useState();
+
   console.disableYellowBox = true;
   console.log("CheifScreen\n" + route.params.cid);
-  console.log(type + " " + id);
+
   useEffect(() => {
     setanimate(true);
     getcheifdata();
     setTimeout(() => {
       setanimate(false);
     }, 3000);
+    AsyncStorage.getItem("DataKey").then((value) => {
+      console.log("chiefasyncstorage2");
+      setrdata(JSON.parse(value));
+      console.log(value);
+      console.log(rdata);
+      console.log(JSON.parse(value));
+    });
   }, []);
-  if (state[route.params.cid - 1] == undefined) {
+  if (state[route.params.cid - 1] == undefined || rdata === undefined) {
     return null;
   }
   return (
@@ -56,6 +66,38 @@ export default ({ navigation, route }) => {
             source={require("../../assets/images/Chief.jpeg")}
             size="xlarge"
           />
+          {rdata.type === "Visitor" ? (
+            <ListItem
+              title="Add Favourite"
+              leftIcon={
+                <Icon
+                  name={Iname}
+                  type="AntDesign"
+                  style={{ color: "red", fontSize: 22 }}
+                />
+              }
+              onPress={() => {
+                if (Icheck == false) {
+                  setIname("heart");
+                  setIcheck(true);
+                  var data = {
+                    id: route.params.cid,
+                    user: rdata.id,
+                    name: state[route.params.cid - 1].name,
+                    pic: state[route.params.cid - 1].pic,
+                    type: "fav_chief",
+                  };
+                  putfav(data, () => {
+                    Alert.alert("Chief Added");
+                  });
+                } else {
+                  setIname("hearto");
+                  setIcheck(false);
+                }
+              }}
+              bottomDivider
+            />
+          ) : null}
           <ListItem
             title="Name"
             rightTitle={state[route.params.cid - 1].name}

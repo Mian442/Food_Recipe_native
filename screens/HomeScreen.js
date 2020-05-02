@@ -10,13 +10,20 @@ import {
 import { Avatar, ListItem } from "react-native-elements";
 import { Context } from "../Context/FoodContext";
 import Resultlists from "../components/ProjectComponents/Recipe/Recipelist";
+import { AsyncStorage } from "react-native";
 
 export default ({ navigation }) => {
   const { state, getdata } = useContext(Context);
   const [Ainemate, setanimate] = useState();
   console.disableYellowBox = true;
   const latest = [];
+  console.log("asyncstorage");
 
+  AsyncStorage.getItem("DataKey").then((value) => {
+    console.log("asyncstorage2");
+    console.log(value);
+  });
+  // console.log(getsdata);
   useEffect(() => {
     setanimate(true);
     getdata();

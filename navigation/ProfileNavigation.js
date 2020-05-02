@@ -1,6 +1,9 @@
 import * as React from "react";
 import { TouchableOpacity } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  HeaderStyleInterpolators,
+} from "@react-navigation/stack";
 import ProfileScreen from "../screens/ProfileScreen";
 import EditScreen from "../components/UpdateInfo/UpdateUserInfo";
 import DisplayUserCustomizeList from "../components/ProjectComponents/Favourite/DisplayUserCustomeList";
@@ -13,11 +16,10 @@ import FavouriteScreen from "../components/ProjectComponents/Favourite/Favourite
 
 const Stack = createStackNavigator();
 
-export default function AuthNavigation() {
+export default () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Profile">
       <Stack.Screen name="Profile" component={ProfileScreen} />
-      <Stack.Screen name="Edit" component={EditScreen} />
       <Stack.Screen
         name="FoodDisplayList"
         component={FoodDisplayList}
@@ -33,9 +35,8 @@ export default function AuthNavigation() {
         component={AddRecipeScreen}
         options={{ title: "Add Recipe" }}
       />
-      {/* <Stack.Screen name="Food" component={FoodScreen} /> */}
       <Stack.Screen name="Details" component={LoginScreen} />
       <Stack.Screen name="Favourite" component={FavouriteScreen} />
     </Stack.Navigator>
   );
-}
+};

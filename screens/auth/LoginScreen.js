@@ -10,6 +10,7 @@ import ErrorMessage from "../../components/ErrorMessage";
 import { Context } from "../../Context/FoodContext";
 import UserContext from "../../connection/userContext";
 import userlogcontext from "../../connection/userLogContext";
+import { AsyncStorage } from "react-native";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -59,6 +60,12 @@ function Login({ navigation, firebase }) {
         setLoggedin(true);
         console.log("success");
         check = true;
+        var Data = {
+          id: state[i].id,
+          type: state[i].account_type,
+          LogStatus: true,
+        };
+        await AsyncStorage.setItem("DataKey", JSON.stringify(Data));
         break;
       }
     }
