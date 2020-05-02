@@ -23,7 +23,6 @@ export default ({ navigation, route }) => {
   const [rdata, setrdata] = useState();
 
   console.disableYellowBox = true;
-  console.log("CheifScreen\n" + route.params.cid);
 
   useEffect(() => {
     setanimate(true);
@@ -32,11 +31,7 @@ export default ({ navigation, route }) => {
       setanimate(false);
     }, 3000);
     AsyncStorage.getItem("DataKey").then((value) => {
-      console.log("chiefasyncstorage2");
       setrdata(JSON.parse(value));
-      console.log(value);
-      console.log(rdata);
-      console.log(JSON.parse(value));
     });
   }, []);
   if (state[route.params.cid - 1] == undefined || rdata === undefined) {
@@ -117,7 +112,6 @@ export default ({ navigation, route }) => {
             chevron
             leftIcon={<Icon name="bowl" type="Entypo" />}
             onPress={() => {
-              console.log("fav");
               navigation.navigate("FoodDisplayList", {
                 data: state[route.params.cid - 1].food,
                 premission: false,

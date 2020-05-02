@@ -7,15 +7,18 @@ export default function ChiefScreen({ navigation }) {
   const { state, getcheifdata } = useContext(Context);
   const [Ainemate, setanimate] = useState();
   console.disableYellowBox = true;
+
   useEffect(() => {
+    setanimate(true);
+    getcheifdata();
     navigation.addListener("focus", () => {
       setanimate(true);
       getcheifdata();
-      setTimeout(() => {
-        setanimate(false);
-      }, 3000);
     });
   }, []);
+  setTimeout(() => {
+    setanimate(false);
+  }, 3000);
   return (
     <View>
       <View>

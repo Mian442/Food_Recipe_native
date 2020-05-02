@@ -28,9 +28,6 @@ export default ScreenChooser = ({ navigation }) => {
   const value = { loggedIn, setLoggedin };
   useEffect(() => {
     AsyncStorage.getItem("DataKey").then((value) => {
-      console.log("Screenchasyncstorage2");
-      console.log("jj" + value);
-      console.log(JSON.parse(value).LogStatus);
       setLoggedin(JSON.parse(value).LogStatus);
     });
   });

@@ -10,7 +10,6 @@ import { withNavigation } from "react-navigation";
 import { ListItem } from "react-native-elements";
 
 export default list = ({ navigation, route }) => {
-  console.log("FoodScreen");
   console.disableYellowBox = true;
   return (
     <View>

@@ -14,13 +14,11 @@ import { AsyncStorage } from "react-native";
 
 export default list = ({ title, result, navigation, del_type }) => {
   const { data1, data2 } = useContext(userlogcontext);
+  console.log(result.length);
   const [id, setid] = useState();
   AsyncStorage.getItem("DataKey").then((value) => {
-    console.log("del chief asyncstorage2");
     setid(JSON.parse(value).id);
-    console.log(value);
   });
-  console.log("chieflistscreen");
   console.disableYellowBox = true;
   const { delfavchief } = useContext(Context);
   const filteredResults = result.filter(function(item) {

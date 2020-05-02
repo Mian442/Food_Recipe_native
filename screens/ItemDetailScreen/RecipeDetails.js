@@ -30,9 +30,7 @@ export default ({ navigation, route }) => {
   const selectid = route.params.id;
   const [rdata, setrdata] = useState();
   AsyncStorage.getItem("DataKey").then((value) => {
-    console.log("asyncstorage2");
     setrdata(JSON.parse(value));
-    console.log(value);
   });
 
   const [Ainemate, setanimate] = useState(true);
@@ -89,7 +87,6 @@ export default ({ navigation, route }) => {
                       if (Icheck == false) {
                         setIname("heart");
                         setIcheck(true);
-                        console.log("start");
                         var data = {
                           id: selectid,
                           user: rdata.id,

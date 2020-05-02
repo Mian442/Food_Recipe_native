@@ -14,9 +14,6 @@ const ProfileScreen = ({ navigation }) => {
   const { data1, data2 } = useContext(userlogcontext);
   const [id, setid] = data1;
   const [type, settype] = data2;
-  console.log("Profile");
-  console.log(id);
-  console.log(type);
 
   return (
     <UserContext.Consumer>

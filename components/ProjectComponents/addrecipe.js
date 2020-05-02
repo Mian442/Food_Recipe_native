@@ -23,6 +23,7 @@ import userlogcontext from "../../connection/userLogContext";
 import Key from "../../API/FirebaseStorageConfig";
 import * as firebase from "firebase/app";
 import "firebase/storage";
+import { AsyncStorage } from "react-native";
 
 export default ({ navigation }) => {
   const { putrecipe } = useContext(Context);
@@ -32,15 +33,15 @@ export default ({ navigation }) => {
   const [ingdata, setingdata] = useState([]);
   const [image, setImage] = useState(null);
   const { data1, data2 } = useContext(userlogcontext);
-  const [id, setid] = data1;
-  const [type, settype] = data2;
+  const [id, setid] = useState();
   const [visible, setVisible] = useState(false);
-
+  AsyncStorage.getItem("DataKey").then((value) => {
+    setid(JSON.parse(value).id);
+  });
   const toggleOverlay = () => {
     setVisible(!visible);
   };
   console.disableYellowBox = true;
-  console.log("Add" + id);
   const pickImage = async () => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -57,7 +58,6 @@ export default ({ navigation }) => {
       alert(E);
     }
   };
-  console.log(image);
   return (
     <ScrollView>
       <View style={{ flex: 1 }}>
@@ -217,7 +217,6 @@ export default ({ navigation }) => {
           onPress={() => {
             setDetail([...Detail, value2]);
             setvalue2("");
-            console.log(Detail);
             if (Detail.length < 4) {
               Alert.alert("Please Complete All The Information");
               return null;
@@ -245,6 +244,7 @@ export default ({ navigation }) => {
               views: Math.floor(Math.random() * 99999) + 1,
             };
             putrecipe(data, () => {
+              alert("New Recipe Added");
               navigation.navigate("Profile");
             });
           }}

@@ -68,8 +68,6 @@ const getSingleuserdata = (dispatch) => {
     const response = await Recipe.get(
       `/${type === "Chief" ? "chief" : "user"}.json`
     );
-    console.log("SUD");
-    console.log(response.data.length);
     dispatch({ type: "get_SUser_data", payload: response.data });
   };
 };
@@ -120,7 +118,6 @@ const delfavrec = () => {
 
 const delfavchief = () => {
   return async (id, user, callback) => {
-    console.log(id + " " + user + " ");
     var delid;
     const response = await Recipe.get(`/user/${user - 1}/fav_chief.json`);
     for (var i = 0; i < response.data.length; i++) {
@@ -232,11 +229,9 @@ const getfooddata = (dispatch) => {
 
 const getcatdata = (dispatch) => {
   return async (cat) => {
-    console.log("incom" + cat);
     const response = await Recipe.get(
       `/recipes.json?orderBy="category"&equalTo="${cat}"&print=pretty`
     );
-    console.log(response.data);
     var a = [];
     var j = 0;
     for (var i = 0; i < 100; i++) {
@@ -245,7 +240,6 @@ const getcatdata = (dispatch) => {
         j++;
       }
     }
-    console.log("rec" + a.length);
     dispatch({ type: "get_cat_data", payload: a });
   };
 };

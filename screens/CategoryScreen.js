@@ -8,8 +8,6 @@ export default class CategoryScreen extends Component {
   }
   render() {
     console.disableYellowBox = true;
-    console.log("jh");
-    console.log(this.props);
     return (
       <View style={{ flex: 1 }}>
         <Categorylist navigation={this.props.navigation} />

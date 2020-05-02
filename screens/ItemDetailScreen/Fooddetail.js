@@ -25,15 +25,12 @@ import { AntDesign } from "@expo/vector-icons";
 import { Context } from "../../Context/FoodContext";
 
 const Details = ({ navigation, route }) => {
-  console.log("fooddetail");
-  console.log(route.params.id);
   const id = route.params.id;
   console.disableYellowBox = true;
   const [Ainemate, setanimate] = useState();
   const { state, getfooddata } = useContext(Context);
   console.disableYellowBox = true;
   useEffect(() => {
-    console.log("effect");
     getfooddata();
   }, []);
   if (state[id - 1] === undefined) {

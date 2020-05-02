@@ -18,10 +18,8 @@ export default list = ({ title, result, del_type, navigation }) => {
   const [id, setid] = useState();
   const [type, settype] = useState();
   AsyncStorage.getItem("DataKey").then((value) => {
-    console.log("del chief asyncstorage2");
     setid(JSON.parse(value).id);
     settype(JSON.parse(value).type);
-    console.log(value);
   });
   const { delfavrec } = useContext(Context);
   const filteredResults = result.filter(function(item) {
@@ -56,7 +54,8 @@ export default list = ({ title, result, del_type, navigation }) => {
                   marginLeft: 50,
                 }}
                 onPress={() => {
-                  delfavrec(result.id, id, type, () => {
+                  delfavrec(item.id, id, type, () => {
+                    alert("Recipe Deleted");
                     navigation.navigate("Profile");
                   });
                 }}

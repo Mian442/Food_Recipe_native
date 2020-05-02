@@ -18,25 +18,20 @@ import {
 } from "@expo/vector-icons";
 
 export default ({ navigation, route }) => {
-  console.log("hh");
-  console.log(route.params);
   const { state, getcatdata } = useContext(Context);
   const [Ainemate, setanimate] = useState();
   console.disableYellowBox = true;
   useEffect(() => {
     navigation.addListener("focus", () => {
       setanimate(true);
-      console.log("hdh");
       getcatdata(route.params.type);
       setTimeout(() => {
         setanimate(false);
       }, 3000);
     });
   }, []);
-  console.log("CatSpec");
-  console.log(state);
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       {Ainemate == true ? (
         <ActivityIndicator
           color="#0000ff"

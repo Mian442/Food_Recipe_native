@@ -17,16 +17,9 @@ export default ({ navigation }) => {
   const [Ainemate, setanimate] = useState();
   console.disableYellowBox = true;
   const latest = [];
-  console.log("asyncstorage");
-
-  AsyncStorage.getItem("DataKey").then((value) => {
-    console.log("asyncstorage2");
-    console.log(value);
-  });
-  // console.log(getsdata);
   useEffect(() => {
-    setanimate(true);
     getdata();
+    setanimate(true);
     setTimeout(() => {
       setanimate(false);
     }, 3000);

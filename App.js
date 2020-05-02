@@ -19,7 +19,6 @@ const Stack = createStackNavigator();
 export default App = () => {
   const [loggedIn, setLoggedin] = useState();
   const value = { loggedIn, setLoggedin };
-  console.log(value);
   return (
     <UserContext.Provider value={value}>
       <UserContext.Consumer>

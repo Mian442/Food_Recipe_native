@@ -25,28 +25,26 @@ export default ({ navigation, route }) => {
   const [type, settype] = useState();
 
   console.disableYellowBox = true;
-  console.log("Logger1\n" + id + " " + type);
   useEffect(() => {
     setanimate(true);
-    getSingleuserdata(type);
     setTimeout(() => {
       setanimate(false);
     }, 3000);
     AsyncStorage.getItem("DataKey").then((value) => {
-      console.log("proasyncstorage2");
-      console.log("jj" + value);
-      console.log(JSON.parse(value).type);
       settype(JSON.parse(value).type);
       setid(JSON.parse(value).id);
+      getSingleuserdata(JSON.parse(value).type);
     });
     navigation.addListener("focus", () => {
-      console.log("LoggerFocus");
+      AsyncStorage.getItem("DataKey").then((value) => {
+        settype(JSON.parse(value).type);
+        setid(JSON.parse(value).id);
+        getSingleuserdata(JSON.parse(value).type);
+      });
       setanimate(true);
-      getSingleuserdata(type);
       setTimeout(() => {
         setanimate(false);
       }, 3000);
-      console.log("LoggerFocusend");
     });
   }, []);
   if (state[id - 1] == undefined) {
@@ -105,7 +103,6 @@ export default ({ navigation, route }) => {
             chevron
             leftIcon={<Icon name="bowl" type="Entypo" />}
             onPress={() => {
-              console.log("fav");
               if (type === "Chief") {
                 navigation.navigate("FoodDisplayList", {
                   data: state[id - 1].food,
@@ -125,7 +122,6 @@ export default ({ navigation, route }) => {
               leftIcon={<Icon name="book" type="MaterialCommunityIcons" />}
               chevron
               onPress={() => {
-                console.log("recip");
                 navigation.navigate("DisplayList", {
                   data: state[id - 1].recipe,
                   premission: true,

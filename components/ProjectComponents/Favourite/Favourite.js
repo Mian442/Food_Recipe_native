@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from "react";
-import {ActivityIndicator, ScrollView, StyleSheet, View,} from "react-native";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, ScrollView, StyleSheet, View } from "react-native";
 import ResultList from "../Recipe/Recipelist";
 import ChiefList from "../Chief/Cheiflist";
 
-export default ({navigation, route}) => {
-  console.log("favscreen");
-  console.log(route.params);
+export default ({ navigation, route }) => {
   const [Ainemate, setanimate] = useState();
   useEffect(() => {
     setanimate(true);
@@ -15,32 +13,32 @@ export default ({navigation, route}) => {
   }, []);
 
   return (
-      <ScrollView style={{flex: 1}}>
-        <View>
-          {Ainemate == true ? (
-              <ActivityIndicator
-                  color="#0000ff"
-                  size="large"
-                  style={{marginTop: 300}}
-              />
-          ) : (
-              <View>
-                <ResultList
-                    title="All Recipe's"
-                    result={route.params.data.fav_recipe}
-                    del_type={true}
-                    navigation={navigation}
-                />
-                <ChiefList
-                    title="All Chief's"
-                    result={route.params.data.fav_chief}
-                    del_type={true}
-                    navigation={navigation}
-                />
-              </View>
-          )}
-        </View>
-      </ScrollView>
+    <ScrollView style={{ flex: 1 }}>
+      <View>
+        {Ainemate == true ? (
+          <ActivityIndicator
+            color="#0000ff"
+            size="large"
+            style={{ marginTop: 300 }}
+          />
+        ) : (
+          <View>
+            <ResultList
+              title="All Recipe's"
+              result={route.params.data.fav_recipe}
+              del_type={true}
+              navigation={navigation}
+            />
+            <ChiefList
+              title="All Chief's"
+              result={route.params.data.fav_chief}
+              del_type={true}
+              navigation={navigation}
+            />
+          </View>
+        )}
+      </View>
+    </ScrollView>
   );
 };
 

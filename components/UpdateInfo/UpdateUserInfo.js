@@ -22,10 +22,6 @@ const ProfileScreen = ({ navigation }) => {
     password: "0000000",
   };
 
-  console.log("Profile");
-  console.log(id);
-  console.log(type);
-
   return (
     <UserContext.Consumer>
       {({ loggedIn, setLoggedin }) => (

@@ -1,53 +1,62 @@
-import React, {useContext, useState} from "react";
-import {ActivityIndicator, StyleSheet, Text, TouchableOpacity, View,} from "react-native";
-import {Button} from "react-native-elements";
-import {Context} from "../../../Context/FoodContext";
-import {AntDesign} from "@expo/vector-icons";
+import React, { useContext, useState } from "react";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { Button } from "react-native-elements";
+import { Context } from "../../../Context/FoodContext";
+import { AntDesign } from "@expo/vector-icons";
 import ResultList from "../Recipe/Recipelist";
 // import FoodList from "../";
 // import AddRecipe from "../Components/addrecipe";
 // import ChiefList from "../Components/cheiflist";
 // import { TextInput } from "react-native-gesture-handler";
 
-export default ({navigation, route}) => {
-  console.log("route.params.premission in DiaplayUserCustomList -> ", route.params.premission);
-  const {state, getcheifdata} = useContext(Context);
+export default ({ navigation, route }) => {
+  console.log(
+    "route.params.premission in DiaplayUserCustomList -> ",
+    route.params.premission
+  );
+  const { state, getcheifdata } = useContext(Context);
   const [Ainemate, setanimate] = useState();
 
   return (
-      <View style={{flex: 1}}>
-        {Ainemate === true ? (
-            <ActivityIndicator
-                color="#0000ff"
-                size="large"
-                style={{marginTop: 300}}
+    <View style={{ flex: 1 }}>
+      {Ainemate === true ? (
+        <ActivityIndicator
+          color="#0000ff"
+          size="large"
+          style={{ marginTop: 300 }}
+        />
+      ) : (
+        <View style={{ flex: 1 }}>
+          <ResultList
+            navigation={navigation}
+            title="Chief Recipe"
+            result={route.params.data}
+            del_type={route.params.premission === true}
+          />
+          {route.params.premission === true ? (
+            <Button
+              onPress={() => navigation.navigate("AddRecipe")}
+              title={"Add"}
+              Icon={{ name: "plus" }}
+              style={{ padding: 10, marginTop: 20 }}
+              type="outline"
+              buttonStyle={{
+                borderRadius: 20,
+                marginHorizontal: 40,
+                marginVertical: 20,
+                borderWidth: 2,
+              }}
             />
-        ) : (
-            <View style={{flex: 1}}>
-              <ResultList
-                  navigation={navigation}
-                  title="Chief Recipe"
-                  result={route.params.data}
-                  del_type={route.params.premission === true}
-              />
-              {route.params.premission === true ? (
-                  <Button
-                      onPress={() => navigation.navigate("AddRecipe")}
-                      title={"Add"}
-                      Icon={{name: "plus"}}
-                      style={{padding: 10, marginTop: 20}}
-                      type="outline"
-                      buttonStyle={{
-                        borderRadius: 20,
-                        marginHorizontal: 40,
-                        marginVertical: 20,
-                        borderWidth: 2,
-                      }}
-                  />
-              ) : null}
-            </View>
-        )}
-      </View>
+          ) : null}
+        </View>
+      )}
+    </View>
   );
 };
 
@@ -88,31 +97,3 @@ const styles = StyleSheet.create({
     marginTop: 9,
   },
 });
-
-
-// if (1 == "Add Recipe") {
-//   console.log("add");
-//   return (
-//       <View>
-//         <View style={styles.header}>
-//           <TouchableOpacity style={styles.iconOT}>
-//             <AntDesign
-//                 name="arrowleft"
-//                 style={styles.iconStyle}
-//                 onPress={() => {
-//                   setlog("out");
-//                 }}
-//             />
-//           </TouchableOpacity>
-//           <Text style={styles.Htext}>{log} Details</Text>
-//         </View>
-//         <AddRecipe
-//             id={id}
-//             callback={() => {
-//               setlog("Recipe");
-//               navigation.navigate("Home");
-//             }}
-//         />
-//       </View>
-//   );
-// }
